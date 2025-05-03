@@ -1,7 +1,7 @@
 #include "Character.h"
 #include <iostream>
 using namespace std;
-Character::Character() : name(""), level(1), health(100), attack(10), defense(50) {}
+Character::Character() : name("Character"), level(1), health(100), attack(10), defense(50) {}
 Character::Character(string n, int l, int h, int a, int d) : name(n), level(l), health(h), attack(a), defense(d) {}
 
 string Character::getName() const { return name; }
@@ -28,7 +28,7 @@ bool Character::isAlive() const
 void Character::heal(int a)
 {
     health += a;
-    if (health > 100) // Assuming max health is 100
+    if (health > 100)
         health = 100;
 }
 
@@ -37,34 +37,60 @@ void Warrior::attackTarget(Character& c)
     int damage = attack - c.getDefense();
     if (damage < 0) damage = 0;
     c.takeDamage(damage);
-    cout << name << " attacks " << c.getName() << " for " << damage << " damage!" << endl;
-}
-void Warrior::useSpecialAbility()
-{
-    cout << name << " uses Run It Back!" << endl;
-    // Implement special ability logic here
+    cout << name << " attacks " << c.getName() << endl;
 }
 void Mage::attackTarget(Character& c)
 {
     int damage = attack - c.getDefense();
     if (damage < 0) damage = 0;
     c.takeDamage(damage);
-    cout << name << " attacks " << c.getName() << " for " << damage << " damage!" << endl;
+    cout << name << " attacks " << c.getName() << endl;
 }
+void Archer::attackTarget(Character& target) {
+    if (tailWind) {
+        cout << name << " dodges the attack using 'Tailwind'!\n";
+        tailWind = false; 
+        return; 
+    }
+
+    int damage = attack - target.getDefense();
+    if (damage < 0) damage = 0;
+    target.takeDamage(damage);
+    cout << name << " attacks " << target.getName() << " for " << damage << " damage.\n";
+}
+
+void Warrior::useSpecialAbility()
+{
+    cout << name << " uses Run It Back!" << endl;
+    if (!runItBack) {
+        attack += 15;
+        runItBack = true;
+        cout << "Run it back activated! Attack increased by 15." << endl;
+        cout << "If " << name << " is defeated this turn, they will revive with 50% health." << endl;
+    } else {
+        cout << "Special ability already active!\n";
+    }
+}
+
 void Mage::useSpecialAbility()
 {
-    cout << name << " uses Orb of Destruction!" << endl;
-    // Implement special ability logic here
+    cout << name << " uses Healing Orb!" << endl;
+    if(!orbCooldown){
+        heal(20);
+        orbCooldown = true;
+    } else {
+        cout << "Special ability already active!" << endl;
+    }
 }
-void Archer::attackTarget(Character& c)
-{
-    int damage = attack - c.getDefense();
-    if (damage < 0) damage = 0;
-    c.takeDamage(damage);
-    cout << name << " attacks " << c.getName() << " for " << damage << " damage!" << endl;
-}
+
 void Archer::useSpecialAbility()
 {
     cout << name << " uses Tailwind!" << endl;
-    // Implement special ability logic here
+    if(!tailWind){
+        tailWind = true;
+        cout << "Tailwind activated! Next attack will dodge." << endl;
+    } else {
+        cout << "Special ability already active!" << endl;
+    }
 }
+
