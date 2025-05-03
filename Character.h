@@ -3,7 +3,7 @@
 #include<iostream>
 using namespace std;
 class Character {
-private:
+protected:
 	string name;
 	int level;
 	int health;
@@ -15,22 +15,40 @@ public:
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
 	virtual void useSpecialAbility() = 0;
+
+	string getName() const;
+	int getLevel() const;
+	int getHealth() const;
+	int getAttack() const;
+	int getDefense() const;
+
+	void takeDamage(int dmg);
+	bool isAlive() const;
+	void heal(int a);
+
+
 };
 class Warrior : public Character {
+private:
+	bool runItBack;
 public:
-	Warrior() : Character("Warrior", 1, 100, 10, 50) {}
+	Warrior();
 	void attackTarget(Character& c);
 	void useSpecialAbility();
 };
 class Mage : public Character {
+private:
+	bool orbCooldown;
 public:
-	Mage() : Character("Mage", 1, 85, 15, 25) {}
+	Mage();
 	void attackTarget(Character& c);
 	void useSpecialAbility();
 };
 class Archer : public Character {
+private:
+	bool tailWind;
 public:
-	Archer() : Character("Archer", 1, 75, 20, 10) {}
+	Archer();
 	void attackTarget(Character& c);
 	void useSpecialAbility() override;
 };
