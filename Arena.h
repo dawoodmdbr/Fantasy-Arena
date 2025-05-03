@@ -17,11 +17,11 @@ public:
     Arena(string n, environmentType e, Character* c1, Character* c2);
     
     void applyEnvironmentEffects();
-    void triggerRandomWeather();   
+    void triggerRandomWeather(int r);   
+    void resetWeatherEffects(int r);
     void startBattle();                
 
     string getEnvironmentName() const;
-    void resetWeatherEffects();
 };
 
 #endif

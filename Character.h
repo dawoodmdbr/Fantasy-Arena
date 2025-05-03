@@ -10,14 +10,14 @@ protected:
 	int health;
 	int attack;
 	int defense;
+	bool special;
 public:
 	Character();
-	Character(string n, int l, int h, int a, int d);
+	Character(string n, int l, int h, int a, int d, bool s);
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
-	virtual void useSpecialAbility() = 0;
-	
-	virtual void applyEnvironmentEffects(environmentType e) = 0;
+	virtual void useSpecialAbility(Character& target) = 0;
+	virtual void specialAbilityActive() = 0;
 
 	string getName() const;
 	int getLevel() const;
@@ -34,31 +34,28 @@ public:
 
 };
 class Warrior : public Character {
-private:
-	bool runItBack;
 public:
 	Warrior();
 	void attackTarget(Character& c);
-	void useSpecialAbility();
-	void applyEnvironmentBonus(environmentType e);
+	// Run It Back: Attack +15, if defeated, revive with 50% health
+	void useSpecialAbility(Character& target);
+	void specialAbilityActive();
 };
 class Mage : public Character {
-private:
-	bool healingOrb;
 public:
 	Mage();
 	void attackTarget(Character& c);
-	void useSpecialAbility();
-	void applyEnvironmentBonus(environmentType e);
+	// Healing Orb: Heal +20
+	void useSpecialAbility(Character& target);
+	void specialAbilityActive();
 };
 class Archer : public Character {
-private:
-	bool tailWind;
 public:
 	Archer();
 	void attackTarget(Character& c);
-	void useSpecialAbility();
-	void applyEnvironmentBonus(environmentType e);
+	// Tailwind: Dodges the next attack
+	void useSpecialAbility(Character& target);
+	void specialAbilityActive();
 };
 
 #endif
