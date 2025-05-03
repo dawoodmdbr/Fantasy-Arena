@@ -1,6 +1,7 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 #include<iostream>
+#include"Arena.h"
 using namespace std;
 class Character {
 protected:
@@ -15,6 +16,8 @@ public:
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
 	virtual void useSpecialAbility() = 0;
+	
+	virtual void applyEnvironmentEffects(environmentType e) = 0;
 
 	string getName() const;
 	int getLevel() const;
@@ -22,9 +25,11 @@ public:
 	int getAttack() const;
 	int getDefense() const;
 
-	void takeDamage(int dmg);
 	bool isAlive() const;
 	void heal(int a);
+	void takeDamage(int damage);
+	void boostAttack(int a);
+	void boostDefense(int a);
 
 
 };
@@ -35,14 +40,16 @@ public:
 	Warrior();
 	void attackTarget(Character& c);
 	void useSpecialAbility();
+	void applyEnvironmentBonus(environmentType e);
 };
 class Mage : public Character {
 private:
-	bool orbCooldown;
+	bool healingOrb;
 public:
 	Mage();
 	void attackTarget(Character& c);
 	void useSpecialAbility();
+	void applyEnvironmentBonus(environmentType e);
 };
 class Archer : public Character {
 private:
@@ -50,7 +57,8 @@ private:
 public:
 	Archer();
 	void attackTarget(Character& c);
-	void useSpecialAbility() override;
+	void useSpecialAbility();
+	void applyEnvironmentBonus(environmentType e);
 };
 
-#endif // !CHARACTER_H
+#endif
