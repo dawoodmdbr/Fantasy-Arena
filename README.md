@@ -38,26 +38,33 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
 
 ---
 
-## ⚙️ How to Compile & Run
+### 1. Download the ZIP File
+- Visit the repository or click the download button to get the ZIP file of the game source code.
+- [Download ZIP](#) (You can replace `#` with the actual link to the repository or file).
 
-### 🛠️ Requirements
+### 2. Extract the ZIP
+- Once the ZIP file is downloaded, extract the contents to a folder of your choice.
 
-- C++11 or higher compatible compiler (e.g. `g++`, `clang++`)
+### 3. Open the Project in an IDE
+- Open the extracted folder using your preferred Integrated Development Environment (IDE) like **Visual Studio**, **CLion**, or **Code::Blocks**.
+- Make sure your IDE is set up to support C++.
 
-### 🔧 Compilation
+### 4. Build the Project
+- After opening the project, build the project by compiling all the `.cpp` files.
+    - In **Visual Studio**: Click on `Build` > `Build Solution`.
+    - In **Code::Blocks**: Click on `Build` > `Build and Run`.
+    - In **CLion**: Click on `Build` > `Build Project`.
 
-```bash
-g++ -o arena_game main.cpp GameManager.cpp Character.cpp Arena.cpp -std=c++11
-```
+### 5. Run the Program
+- After a successful build, run the program.
+    - In **Visual Studio**: Click on `Debug` > `Start Debugging`.
+    - In **Code::Blocks**: Click on `Build` > `Run`.
+    - In **CLion**: Click on the green arrow `Run`.
 
-### ▶️ Run
+### 6. Play the Game
+- Once the game starts, follow the on-screen instructions to create characters, choose an arena, and engage in battle.
+- You can attack, use special abilities, and even perform combo attacks.
 
-```bash
-./arena_game       # Linux/macOS
-arena_game.exe     # Windows
-```
-
----
 
 ## 📂 File Structure
 
