@@ -1,4 +1,5 @@
 #include "Arena.h"
+#include "Character.h"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -6,6 +7,12 @@ using namespace std;
 
 Arena::Arena() : name(""), environment(environmentType::FIRE), c1(nullptr), c2(nullptr) {}
 Arena::Arena(string n, environmentType e, Character *c1, Character *c2) : name(n), environment(e), c1(c1), c2(c2) {}
+Arena::~Arena()
+{
+    delete c1;
+    delete c2;
+}
+
 
 string Arena::getEnvironmentName() const
 {
@@ -156,6 +163,7 @@ void Arena::startBattle()
         c1->specialAbilityActive();
         c2->specialAbilityActive();
     }
+
     cout << endl << "Battle Over!" << endl;
     if (c1->isAlive())
         cout << c1->getName() << " wins!" << endl;

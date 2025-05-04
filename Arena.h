@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+class Character;
+
 enum class environmentType {FIRE, ICE, JUNGLE};
 
 class Arena{
@@ -15,6 +17,7 @@ private:
 public:
     Arena();
     Arena(string n, environmentType e, Character* c1, Character* c2);
+    ~Arena();
     
     void applyEnvironmentEffects();
     void triggerRandomWeather(int r);   
