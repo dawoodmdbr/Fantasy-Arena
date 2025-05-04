@@ -11,9 +11,10 @@ protected:
 	int attack;
 	int defense;
 	bool special;
+	int specialCooldown;
 public:
 	Character();
-	Character(string n, int l, int h, int a, int d, bool s);
+	Character(string n, int l, int h, int a, int d, bool s, int sc);
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
 	virtual void useSpecialAbility(Character& target) = 0;
@@ -25,17 +26,25 @@ public:
 	int getAttack() const;
 	int getDefense() const;
 
+	bool canUseSpecial() const;
+	void resetCooldown();
+	void reduceCooldown();
+	int getSpecialCooldown() const;
+
 	bool isAlive() const;
 	void heal(int a);
 	void takeDamage(int damage);
 	void boostAttack(int a);
 	void boostDefense(int a);
 
-
+	friend Character& operator-(Character& attacker, Character& target);
+	friend ostream& operator<<(ostream& out, const Character& c);
+	friend bool operator==(const Character& c1, const Character& c2);
 };
 class Warrior : public Character {
 public:
 	Warrior();
+	Warrior(string n, int l, int h, int a, int d, bool s);
 	void attackTarget(Character& c);
 	// Run It Back: Attack +15, if defeated, revive with 50% health
 	void useSpecialAbility(Character& target);
@@ -58,4 +67,8 @@ public:
 	void specialAbilityActive();
 };
 
+Warrior operator+(const Character& c1, const Character& c2);
+bool operator==(const Character& c1, const Character& c2);
+ostream& operator<<(ostream& out, const Character& c);
+Character& operator-(Character& attacker, Character& target);
 #endif

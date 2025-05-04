@@ -17,7 +17,6 @@ private:
 public:
     Arena();
     Arena(string n, environmentType e, Character* c1, Character* c2);
-    ~Arena();
     
     void applyEnvironmentEffects();
     void triggerRandomWeather(int r);   
