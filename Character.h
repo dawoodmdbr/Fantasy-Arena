@@ -10,11 +10,10 @@ protected:
 	int health;
 	int attack;
 	int defense;
-	bool special;
 	int specialCooldown;
 public:
 	Character();
-	Character(string n, int l, int h, int a, int d, bool s, int sc);
+	Character(string n, int l, int h, int a, int d, int sc);
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
 	virtual void useSpecialAbility(Character& target) = 0;

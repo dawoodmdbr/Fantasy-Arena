@@ -36,7 +36,6 @@ void GameManager::createCharacter()
     cout << "1. Warrior" << endl;
     cout << "2. Mage" << endl;
     cout << "3. Archer" << endl;
-option1:
     cout << "Player 1: ";
     cin >> choice;
     cin.ignore();
@@ -66,7 +65,6 @@ option1:
     cout << "1. Warrior" << endl;
     cout << "2. Mage" << endl;
     cout << "3. Archer" << endl;
-option2:
     cout << "Player 2: ";
     cin >> choice;
     cin.ignore();
@@ -127,8 +125,7 @@ void GameManager::createArena()
 
 void GameManager::startGame()
 {
-    cout << endl
-         << "Welcome to the Battle Arena!" << endl;
+    cout << "Welcome to the Battle Arena!" << endl;
     cout << "Battle started between " << player1->getName() << " and " << player2->getName() << endl;
 
     cout << *player1 << endl << *player2;
@@ -167,6 +164,7 @@ void GameManager::startGame()
             if (player1->canUseSpecial())
             {
                 player1->useSpecialAbility(*player2);
+                player2->resetCooldown();
             }
             else
             {
@@ -220,6 +218,7 @@ void GameManager::startGame()
             if (player2->canUseSpecial())
             {
                 player2->useSpecialAbility(*player1);
+                player2->resetCooldown();
             }
             else
             {
@@ -263,8 +262,6 @@ void GameManager::startGame()
         player1->reduceCooldown();
         player2->reduceCooldown();
 
-        player1->specialAbilityActive();
-        player2->specialAbilityActive();
 
         round++;
 
