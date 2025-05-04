@@ -19,9 +19,9 @@ void Character::reduceCooldown() {
 }
 int Character::getSpecialCooldown() const { return specialCooldown; }
 
-Warrior::Warrior() : Character("Warrior", 1, 100, 10, 50, false, 0) {}
+Warrior::Warrior() : Character("Warrior", 1, 100, 35, 50, false, 0) {}
 Warrior::Warrior(string n, int l, int h, int a, int d, bool s) : Character(n, l, h, a, d, s, 0) {}
-Mage::Mage() : Character("Mage", 1, 80, 15, 20, false, 0) {}
+Mage::Mage() : Character("Mage", 1, 80, 15, 50, false, 0) {}
 Archer::Archer() : Character("Archer", 1, 75, 20, 10, false, 0) {}
 
 bool Character::isAlive() const

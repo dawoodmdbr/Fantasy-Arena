@@ -255,6 +255,7 @@ void GameManager::startGame()
         arena->resetWeatherEffects(random);
 
         system("pause");
+        system("cls");
 
         random = rand() % 3;
         arena->triggerRandomWeather(random);
