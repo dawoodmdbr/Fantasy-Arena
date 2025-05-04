@@ -38,44 +38,20 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
 
 ---
 
-### 1. Download the ZIP File
-- Visit the repository or click the download button to get the ZIP file of the game source code.
-- [Download ZIP](#) (You can replace `#` with the actual link to the repository or file).
+## 🚀 How to Run
+1. **Clone the repo**  
+   Use the following command to clone the repository:
+   ```bash
+   git clone https://github.com/dawoodmdbr/Fantasy-Arena
 
-### 2. Extract the ZIP
-- Once the ZIP file is downloaded, extract the contents to a folder of your choice.
+## Game Instructions
 
-### 3. Open the Project in an IDE
-- Open the extracted folder using your preferred Integrated Development Environment (IDE) like **Visual Studio**, **CLion**, or **Code::Blocks**.
-- Make sure your IDE is set up to support C++.
+- **Choose Your Character**: Pick from Warrior, Mage, or Archer for both players.
+- **Choose Your Arena**: Select an arena that influences the battle with environmental effects.
+- **Combat**: Players alternate turns to attack, use special abilities, or perform combo moves.
+- **Winning**: The first player to reduce the opponent's health to zero wins.
 
-### 4. Build the Project
-- After opening the project, build the project by compiling all the `.cpp` files.
-    - In **Visual Studio**: Click on `Build` > `Build Solution`.
-    - In **Code::Blocks**: Click on `Build` > `Build and Run`.
-    - In **CLion**: Click on `Build` > `Build Project`.
-
-### 5. Run the Program
-- After a successful build, run the program.
-    - In **Visual Studio**: Click on `Debug` > `Start Debugging`.
-    - In **Code::Blocks**: Click on `Build` > `Run`.
-    - In **CLion**: Click on the green arrow `Run`.
-
-### 6. Play the Game
-- Once the game starts, follow the on-screen instructions to create characters, choose an arena, and engage in battle.
-- You can attack, use special abilities, and even perform combo attacks.
-
-
-## 📂 File Structure
-
-```
-📁 ArenaBattleGame/
-├── main.cpp             # Entry point of the game
-├── Character.h/.cpp     # Base and derived character classes
-├── Arena.h/.cpp         # Arena effects and logic
-├── GameManager.h/.cpp   # Game control logic
-└── README.md            # Project documentation
-```
+---
 
 ---
 
@@ -88,6 +64,18 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
 - 🧠 **Turn-Based Strategy** – Each move matters
 
 ---
+
+## 📂 File Structure
+
+```
+📁 ArenaBattleGame/
+├── main.cpp             # Entry point of the game
+├── Character.h/.cpp     # Base and derived character classes
+├── Arena.h/.cpp         # Arena effects and logic
+├── GameManager.h/.cpp   # Game control logic
+└── README.md            # Project documentation
+```
+
 
 ## 📌 Notes
 
