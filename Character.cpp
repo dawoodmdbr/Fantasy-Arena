@@ -88,9 +88,10 @@ void Warrior::attackTarget(Character &c)
 void Warrior::useSpecialAbility(Character &target)
 {
     cout << name << " uses Rizz Attack!" << endl;
-        attack += 15;
-        cout << "Rizz Attack activated! Attack increased by 15." << endl;
+    attack += 15;
+    cout << "Rizz Attack activated! Attack increased by 15." << endl;
     attackTarget(target);
+    attack -= 15;
 }
 
 void Mage::attackTarget(Character &c)
@@ -102,9 +103,9 @@ void Mage::attackTarget(Character &c)
 }
 void Mage::useSpecialAbility(Character &target)
 {
-        cout << name << " whispers: 'Skill issue' and steal some health " << endl;
-        target.takeDamage(20);
-        heal(20);
+    cout << name << " whispers: 'Skill issue' and steal some health " << endl;
+    target.takeDamage(20);
+    heal(20);
     attackTarget(target);
 }
 
@@ -116,13 +117,18 @@ void Archer::attackTarget(Character &target)
     target.takeDamage(damage);
     cout << name << " attacks " << target.getName() << " for " << damage << " damage." << endl;
 }
-void Archer::useSpecialAbility(Character &target)
+void Archer::useSpecialAbility(Character& target)
 {
-    cout << name << " uses Tailwind!" << endl;
-    cout << "Tailwind activated! Next attack will dodge." << endl;
-
-    attackTarget(target);
+    cout << name << " uses Arrow Storm!" << endl;
+	srand(time(0));
+    for (int i = 0; i < 3; ++i)
+    {
+        int damage = rand() % 10 + 1;
+        cout << "Arrow " << i + 1 << " hits" << endl;
+        target.takeDamage(damage);
+    }
 }
+
 
 Warrior operator+(const Character &c1, const Character &c2)
 {

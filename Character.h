@@ -52,7 +52,7 @@ class Mage : public Character {
 public:
 	Mage();
 	void attackTarget(Character& c) override;
-	// Healing Orb: Heal +20
+	// Skill Issue: steals 20 health
 	void useSpecialAbility(Character& target) override;
 };
 class Archer : public Character {

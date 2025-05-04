@@ -164,7 +164,7 @@ void GameManager::startGame()
             if (player1->canUseSpecial())
             {
                 player1->useSpecialAbility(*player2);
-                player2->resetCooldown();
+                player1->resetCooldown();
             }
             else
             {
