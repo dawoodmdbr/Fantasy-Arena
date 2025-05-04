@@ -20,7 +20,7 @@ void Character::reduceCooldown() {
 int Character::getSpecialCooldown() const { return specialCooldown; }
 
 Warrior::Warrior() : Character("Warrior", 1, 100, 35, 50, 0) {}
-Warrior::Warrior(string n, int l, int h, int a, int d, bool sc) : Character(n, l, h, a, d, 0) {}
+Warrior::Warrior(string n, int l, int h, int a, int d, bool s) : Character(n, l, h, a, d, s) {}
 Mage::Mage() : Character("Mage", 1, 80, 25, 50, 0) {}
 Archer::Archer() : Character("Archer", 1, 75, 20, 10, 0) {}
 

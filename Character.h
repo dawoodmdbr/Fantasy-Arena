@@ -17,7 +17,6 @@ public:
 	virtual ~Character() {}
 	virtual void attackTarget(Character& c) = 0;
 	virtual void useSpecialAbility(Character& target) = 0;
-	virtual void specialAbilityActive() = 0;
 
 	void setName(string n);
 	string getName() const;
@@ -45,26 +44,23 @@ class Warrior : public Character {
 public:
 	Warrior();
 	Warrior(string n, int l, int h, int a, int d, bool s);
-	void attackTarget(Character& c);
-	// Run It Back: Attack +15, if defeated, revive with 50% health
-	void useSpecialAbility(Character& target);
-	void specialAbilityActive();
+	void attackTarget(Character& c) override;
+	// Rizz Attack: Attack +15
+	void useSpecialAbility(Character& target) override;
 };
 class Mage : public Character {
 public:
 	Mage();
-	void attackTarget(Character& c);
+	void attackTarget(Character& c) override;
 	// Healing Orb: Heal +20
-	void useSpecialAbility(Character& target);
-	void specialAbilityActive();
+	void useSpecialAbility(Character& target) override;
 };
 class Archer : public Character {
 public:
 	Archer();
-	void attackTarget(Character& c);
+	void attackTarget(Character& c)override;
 	// Tailwind: Dodges the next attack
-	void useSpecialAbility(Character& target);
-	void specialAbilityActive();
+	void useSpecialAbility(Character& target)override;
 };
 
 Warrior operator+(const Character& c1, const Character& c2);
