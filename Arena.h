@@ -21,8 +21,7 @@ public:
     
     void applyEnvironmentEffects();
     void triggerRandomWeather(int r);   
-    void resetWeatherEffects(int r);
-    void startBattle();                
+    void resetWeatherEffects(int r);            
 
     string getEnvironmentName() const;
 };

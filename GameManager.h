@@ -13,12 +13,13 @@ private:
 
 public:
     GameManager();
+    GameManager(Character* p1, Character* p2, Arena* a);
     ~GameManager();
 
     void createCharacter();
     void createArena();
     void startGame();
-    
+
 };
 
 
