@@ -19,10 +19,10 @@ void Character::reduceCooldown() {
 }
 int Character::getSpecialCooldown() const { return specialCooldown; }
 
-Warrior::Warrior() : Character("Warrior", 1, 100, 35, 50, false, 0) {}
+Warrior::Warrior() : Character("Warrior", 1, 100, 35, 50, true, 0) {}
 Warrior::Warrior(string n, int l, int h, int a, int d, bool s) : Character(n, l, h, a, d, s, 0) {}
-Mage::Mage() : Character("Mage", 1, 80, 15, 50, false, 0) {}
-Archer::Archer() : Character("Archer", 1, 75, 20, 10, false, 0) {}
+Mage::Mage() : Character("Mage", 1, 80, 25, 50, true, 0) {}
+Archer::Archer() : Character("Archer", 1, 75, 20, 10, true, 0) {}
 
 bool Character::isAlive() const
 {
@@ -87,13 +87,12 @@ void Warrior::attackTarget(Character &c)
 }
 void Warrior::useSpecialAbility(Character &target)
 {
-    cout << name << " uses Run It Back!" << endl;
+    cout << name << " uses Rizz Attack!" << endl;
     if (special)
     {
         attack += 15;
         special = false;
-        cout << "Run it back activated! Attack increased by 15." << endl;
-        cout << "If " << name << " is defeated this turn, they will revive with 50% health." << endl;
+        cout << "Rizz Attack activated! Attack increased by 15." << endl;
     }
     else
     {
@@ -104,12 +103,12 @@ void Warrior::useSpecialAbility(Character &target)
 void Warrior::specialAbilityActive()
 {
     special = true;
-    cout << name << " can now use Run It Back!" << endl;
+    cout << name << " can now use Rizz Attack!" << endl;
 }
 
 void Mage::attackTarget(Character &c)
 {
-    int damage = attack - c.getDefense();
+    int damage = attack;
     if (damage < 0)
         damage = 0;
     c.takeDamage(damage);
@@ -144,7 +143,7 @@ void Archer::attackTarget(Character &target)
         return;
     }
 
-    int damage = attack - target.getDefense();
+    int damage = attack;
     if (damage < 0)
         damage = 0;
     target.takeDamage(damage);

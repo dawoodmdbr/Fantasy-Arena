@@ -9,8 +9,8 @@ ostream &operator<<(ostream &out, const Character &c)
     out << "Name: " << c.getName() << "" << endl;
     out << "Level: " << c.getLevel() << "" << endl;
     out << "Health: " << c.getHealth() << "" << endl;
-    out << "Attack: " << c.getAttack() << "" << endl;
     out << "Defense: " << c.getDefense() << "" << endl;
+    out << "Attack: " << c.getAttack() << "" << endl;
     return out;
 }
 
@@ -121,6 +121,8 @@ void GameManager::createArena()
         arena = new Arena("FIRE", environmentType::FIRE, player1, player2);
         break;
     }
+    system("pause");
+    system("cls");
 }
 
 void GameManager::startGame()
@@ -128,18 +130,23 @@ void GameManager::startGame()
     cout << endl
          << "Welcome to the Battle Arena!" << endl;
     cout << "Battle started between " << player1->getName() << " and " << player2->getName() << endl;
+
+    cout << *player1 << endl << *player2;
     arena->applyEnvironmentEffects();
 
     int round = 1;
     int random = -1;
+    srand(time(0));
     while (player1->isAlive() && player2->isAlive())
     {
+
+        random = rand() % 3;
+        arena->triggerRandomWeather(random);
         int choice;
         int combo1 = (rand() % 10 + 1) == 8;
         int combo2 = (rand() % 10 + 1) == 8;
-        srand(time(0));
 
-        cout << "Round: " << round << endl;
+        cout << endl << "Round: " << round << endl << endl;
 
         cout << "1. Attack" << endl;
         cout << "2. Use Special Ability" << endl;
@@ -188,7 +195,13 @@ void GameManager::startGame()
             goto option1;
         }
 
-        cout << "1. Attack" << endl;
+		if (!(player2->isAlive()))
+		{
+			cout << player2->getName() << " is dead!" << endl;
+			break;
+		}
+
+        cout << endl << "1. Attack" << endl;
         cout << "2. Use Special Ability" << endl;
         if (combo2)
         {
@@ -250,6 +263,9 @@ void GameManager::startGame()
         player1->reduceCooldown();
         player2->reduceCooldown();
 
+        player1->specialAbilityActive();
+        player2->specialAbilityActive();
+
         round++;
 
         arena->resetWeatherEffects(random);
@@ -257,11 +273,6 @@ void GameManager::startGame()
         system("pause");
         system("cls");
 
-        random = rand() % 3;
-        arena->triggerRandomWeather(random);
-
-        player1->specialAbilityActive();
-        player2->specialAbilityActive();
     }
 
     cout << endl
