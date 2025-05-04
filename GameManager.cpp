@@ -82,6 +82,7 @@ void GameManager::createArena()
     cout << "1. FIRE" << endl;
     cout << "2. ICE" << endl;
     cout << "3. JUNGLE" << endl;
+    cout << "Arena: ";
     cin >> choice;
     cin.ignore();
 
@@ -105,6 +106,8 @@ void GameManager::createArena()
 
 void GameManager::startGame()
 {
+    cout << endl
+         << "Welcome to the Battle Arena!" << endl;
     cout << "Battle started between " << player1->getName() << " and " << player2->getName() << endl;
     arena->applyEnvironmentEffects();
 
@@ -119,7 +122,6 @@ void GameManager::startGame()
 
         cout << "Round: " << round << endl;
 
-        cout << player1;
         cout << "1. Attack" << endl;
         cout << "2. Use Special Ability" << endl;
         if (combo1)
@@ -132,27 +134,32 @@ void GameManager::startGame()
         switch (choice)
         {
         case 1:
-            cout << player1->getName() << " attacks " << player2->getName() << endl;
+            cout << "Player 1(" << player1->getName() << ") attacks Player 2(" << player2->getName() << ")" << endl;
             player1->attackTarget(*player2);
             break;
         case 2:
-            if (player1->canUseSpecial()) {
+            if (player1->canUseSpecial())
+            {
                 player1->useSpecialAbility(*player2);
-            } else {
+            }
+            else
+            {
                 cout << "Special Cooldown: " << player1->getSpecialCooldown() << " rounds" << endl;
                 goto option1;
             }
             break;
-        
+
         case 3:
             if (combo1)
             {
                 cout << player1->getName() << " uses a combo attack!" << endl;
                 Warrior combo = *player1 + *player2;
-                cout << combo;
+                cout << "Combo Attack: " << combo.getAttack() << endl;
                 combo.attackTarget(*player2);
                 break;
-            } else {
+            }
+            else
+            {
                 cout << "Invalid choice!" << endl;
                 goto option1;
             }
@@ -162,7 +169,6 @@ void GameManager::startGame()
             goto option1;
         }
 
-        cout << player2;
         cout << "1. Attack" << endl;
         cout << "2. Use Special Ability" << endl;
         if (combo2)
@@ -175,28 +181,32 @@ void GameManager::startGame()
         switch (choice)
         {
         case 1:
-            cout << player2->getName() << " attacks " << player1->getName() << endl;
+            cout << "Player 2(" << player2->getName() << ") attacks Player 1(" << player1->getName() << ")" << endl;
             player2->attackTarget(*player1);
             break;
         case 2:
-            if (player2->canUseSpecial()) {
+            if (player2->canUseSpecial())
+            {
                 player2->useSpecialAbility(*player1);
-            } else {
+            }
+            else
+            {
                 cout << "Special Cooldown: " << player2->getSpecialCooldown() << " rounds" << endl;
                 goto option2;
             }
             break;
-        
+
         case 3:
             if (combo2)
             {
                 cout << player2->getName() << " uses a combo attack!" << endl;
                 Warrior combo = *player1 + *player2;
-                cout << "\n--- Combo Move: " << player1->getName() << " + " << player2->getName() << " ---" << endl;
-                cout << combo;
+                cout << "Combo Attack: " << combo.getAttack() << endl;
                 combo.attackTarget(*player1);
                 break;
-            } else {
+            }
+            else
+            {
                 cout << "Invalid choice!" << endl;
                 goto option2;
             }
@@ -219,14 +229,13 @@ void GameManager::startGame()
         }
 
         player1->reduceCooldown();
-        player2->reduceCooldown();        
+        player2->reduceCooldown();
 
         round++;
 
         arena->resetWeatherEffects(random);
 
         system("pause");
-        system("cls");
 
         random = rand() % 3;
         arena->triggerRandomWeather(random);

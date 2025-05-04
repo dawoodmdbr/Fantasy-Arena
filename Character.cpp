@@ -79,11 +79,10 @@ void Character::takeDamage(int damage)
 
 void Warrior::attackTarget(Character &c)
 {
-    int damage = attack - c.getDefense();
+    int damage = attack;
     if (damage < 0)
         damage = 0;
     c.takeDamage(damage);
-    cout << name << " attacks " << c.getName() << endl;
 }
 void Warrior::useSpecialAbility(Character &target)
 {
@@ -113,7 +112,6 @@ void Mage::attackTarget(Character &c)
     if (damage < 0)
         damage = 0;
     c.takeDamage(damage);
-    cout << name << " attacks " << c.getName() << endl;
 }
 void Mage::useSpecialAbility(Character &target)
 {
