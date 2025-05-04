@@ -43,6 +43,9 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
    Use the following command to clone the repository:
    ```bash
    git clone https://github.com/dawoodmdbr/Fantasy-Arena
+2. Open in **VS Code** or any C++ IDE  
+3. Compile the project  
+4. Run the executable (main.cpp)
 
 ## Game Instructions
 
@@ -68,7 +71,7 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
 ## 📂 File Structure
 
 ```
-📁 ArenaBattleGame/
+📁 FantasyArena/
 ├── main.cpp             # Entry point of the game
 ├── Character.h/.cpp     # Base and derived character classes
 ├── Arena.h/.cpp         # Arena effects and logic
@@ -77,21 +80,9 @@ A **console-based C++ fantasy battle simulator** where two players select mythic
 ```
 
 
-## 📌 Notes
-
-- Game is played through a terminal/console interface
-- Perfect for practicing:
-  - Object-Oriented Programming
-  - Inheritance and Polymorphism
-  - Operator Overloading in C++
-  - Game design logic
-
----
-
 ## 🧑‍💻 Developed By
 
-**Mian Dawood bin Rafay**  
-📍 FAST University (CFD Campus)
+**Mian Dawood bin Rafay**
 
 ---
 
