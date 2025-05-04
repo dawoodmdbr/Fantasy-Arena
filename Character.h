@@ -20,6 +20,7 @@ public:
 	virtual void useSpecialAbility(Character& target) = 0;
 	virtual void specialAbilityActive() = 0;
 
+	void setName(string n);
 	string getName() const;
 	int getLevel() const;
 	int getHealth() const;

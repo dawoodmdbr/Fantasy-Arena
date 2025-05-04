@@ -4,6 +4,7 @@ using namespace std;
 Character::Character() : name("Character"), level(1), health(100), attack(10), defense(50) {}
 Character::Character(string n, int l, int h, int a, int d, bool s, int sc) : name(n), level(l), health(h), attack(a), defense(d), special(s), specialCooldown(sc) {}
 
+void Character::setName(string n) { name = n; }
 string Character::getName() const { return name; }
 int Character::getLevel() const { return level; }
 int Character::getHealth() const { return health; }

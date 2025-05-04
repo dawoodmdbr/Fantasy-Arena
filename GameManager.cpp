@@ -25,9 +25,14 @@ GameManager::~GameManager()
 
 void GameManager::createCharacter()
 {
+    string player1Name, player2Name;
     int choice;
 
-    cout << "Choose your character:" << endl;
+    // Ask for player 1's name
+    cout << "Enter name for Player 1: ";
+    cin >> player1Name;
+
+    cout << "Choose character for " << player1Name << ":" << endl;
     cout << "1. Warrior" << endl;
     cout << "2. Mage" << endl;
     cout << "3. Archer" << endl;
@@ -52,6 +57,15 @@ option1:
         player1 = new Warrior();
         break;
     }
+
+    // Ask for player 2's name
+    cout << "Enter name for Player 2: ";
+    cin >> player2Name;
+
+    cout << "Choose character for " << player2Name << ":" << endl;
+    cout << "1. Warrior" << endl;
+    cout << "2. Mage" << endl;
+    cout << "3. Archer" << endl;
 option2:
     cout << "Player 2: ";
     cin >> choice;
@@ -73,7 +87,12 @@ option2:
         player2 = new Warrior();
         break;
     }
+
+    // Set the names of the players
+    player1->setName(player1Name);
+    player2->setName(player2Name);
 }
+
 
 void GameManager::createArena()
 {
@@ -134,7 +153,7 @@ void GameManager::startGame()
         switch (choice)
         {
         case 1:
-            cout << "Player 1(" << player1->getName() << ") attacks Player 2(" << player2->getName() << ")" << endl;
+            cout << player1->getName() << " attacks " << player2->getName() << endl;
             player1->attackTarget(*player2);
             break;
         case 2:
@@ -181,7 +200,7 @@ void GameManager::startGame()
         switch (choice)
         {
         case 1:
-            cout << "Player 2(" << player2->getName() << ") attacks Player 1(" << player1->getName() << ")" << endl;
+            cout << player2->getName() << " attacks " << player1->getName() << endl;
             player2->attackTarget(*player1);
             break;
         case 2:
