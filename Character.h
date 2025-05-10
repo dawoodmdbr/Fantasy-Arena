@@ -59,7 +59,8 @@ class Archer : public Character {
 public:
 	Archer();
 	void attackTarget(Character& c)override;
-	// Tailwind: Dodges the next attack
+	// Arrow Storm: Hits 3 arrows with random damage
+	// 1-10 damage each
 	void useSpecialAbility(Character& target)override;
 };
 
